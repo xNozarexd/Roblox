@@ -1,0 +1,152 @@
+-- RewriteKaitan
+
+local library = loadstring(game:HttpGet("https://raw.githubusercontent.com/naypramx/Ui__Project/Script/XeNonUi", true))()
+
+local CenterHubNo1 = library:CreateWindow("Nestle Hub - Kaitan",Enum.KeyCode.RightControl)
+local Tab = CenterHubNo1:CreateTab("Main")
+local Main = Tab:CreateSector("Info","left")
+local Quest = Tab:CreateSector("Quest","left")
+local Melee = Tab:CreateSector("Melee","left")
+
+local locallv = Main:AddLabel("Level")
+
+Main:AddToggle("Start",true,function(vu)
+    _G.StartFarm = vu
+end)
+
+spawn(function()
+    while wait() do
+        pcall(function()
+            locallv:Set("Level :".." "..game:GetService("Players").LocalPlayer.Data.Level.Value)
+        end)
+    end
+end)
+
+local localrace = Main:AddLabel("Race")
+
+spawn(function()
+    while wait() do
+        pcall(function()
+            localrace:Set("Race :".." "..game:GetService("Players").LocalPlayer.Data.Race.Value)
+        end)
+    end
+end)
+
+local localbeli = Main:AddLabel("Beli")
+
+spawn(function()
+    while wait() do
+        pcall(function()
+            localbeli:Set("Beli :".." "..game:GetService("Players").LocalPlayer.Data.Beli.Value)
+        end)
+    end
+end)
+
+local localfruit = Main:AddLabel("Fruit")
+
+spawn(function()
+    while wait() do
+        pcall(function()
+            if game:GetService("Players").LocalPlayer.Character:FindFirstChild(game:GetService("Players").LocalPlayer.Data.DevilFruit.Value) or game:GetService("Players").LocalPlayer.Backpack:FindFirstChild(game:GetService("Players").LocalPlayer.Data.DevilFruit.Value) then
+                localfruit:Set("Fruit :".." "..game:GetService("Players").LocalPlayer.Data.DevilFruit.Value)
+            else
+                localfruit:Set("Fruit :")
+            end
+        end)
+    end
+end)
+
+local Bartlio_ST = Quest:AddLabel("❌ : Quest Bartlio")
+local Open_Don_Swan_ST = Quest:AddLabel("❌ : Quest Open Don Swan")
+local Phoenix_Awaken_ST = Quest:AddLabel("❌ : Quest Phoenix Awaken")
+local Observation_Haki_ST = Quest:AddLabel("❌ : Quest Observation Haki")
+
+	if game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("TalkTrevor","1") == 0 then
+		Open_Don_Swan_ST:Set("✅ : Open Don Swan Quest")
+	end
+	if game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("BartiloQuestProgress","Bartilo") == 3 then
+		Bartlio_ST:Set("✅ : Bartilo Quest") 
+	end
+
+	if game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("ProQuestProgress","SickMan") == 0 then
+		Observation_Haki_ST:Set('✅ : Quest Observation Haki')
+	end
+
+
+
+local Superhuman = Melee:AddLabel("❌ : Superhuman")
+local DeathStep = Melee:AddLabel("❌ : Death Step")
+local Sharkman = Melee:AddLabel("❌ : Sharkman Karate")
+local Electric = Melee:AddLabel("❌ : Electric Claw")
+local DragonTL = Melee:AddLabel("❌ : Dragon Talon")
+local GodHuman = Melee:AddLabel("❌ : GodHuman")
+
+	for i,x in pairs(M_L) do
+		v = {
+			Name = x["Name"]
+		}
+		if v.Name == "Superhuman" then
+			Superhuman:Set("✅ : Superhuman")
+		end
+		if v.Name == "Death Step" then
+			DeathStep:Set("✅ : Death Step")
+		end
+		if v.Name == "Sharkman Karate" then
+			Sharkman:Set("✅ : Sharkman Karate")
+		end
+		if v.Name == "Electric Claw" then
+			Electric:Set("✅ : Electric Claw")
+		end
+		if v.Name == "Dragon Talon" then
+			DragonTL:Set("✅ : Dragon Talon")
+		end
+		if v.Name == "GodHuman" then
+			GodHuman:Set("✅ : GodHuman")
+		end
+	end
+	for i,v in pairs(game.Players.LocalPlayer.Backpack:GetChildren()) do
+		if v:IsA("Tool") then
+            if v.Name == "Superhuman" then
+                Superhuman:Set("✅ : Superhuman")
+            end
+            if v.Name == "Death Step" then
+                DeathStep:Set("✅ : Death Step")
+            end
+            if v.Name == "Sharkman Karate" then
+                Sharkman:Set("✅ : Sharkman Karate")
+            end
+            if v.Name == "Electric Claw" then
+                Electric:Set("✅ : Electric Claw")
+            end
+            if v.Name == "Dragon Talon" then
+                DragonTL:Set("✅ : Dragon Talon")
+            end
+            if v.Name == "GodHuman" then
+                GodHuman:Set("✅ : GodHuman")
+            end
+		end
+	end
+	for i,v in pairs(game.Players.LocalPlayer.Character:GetChildren()) do
+		if v:IsA("Tool") then
+            if v.Name == "Superhuman" then
+                Superhuman:Set("✅ : Superhuman")
+            end
+            if v.Name == "Death Step" then
+                DeathStep:Set("✅ : Death Step")
+            end
+            if v.Name == "Sharkman Karate" then
+                Sharkman:Set("✅ : Sharkman Karate")
+            end
+            if v.Name == "Electric Claw" then
+                Electric:Set("✅ : Electric Claw")
+            end
+            if v.Name == "Dragon Talon" then
+                DragonTL:Set("✅ : Dragon Talon")
+            end
+            if v.Name == "GodHuman" then
+                GodHuman:Set("✅ : GodHuman")
+            end
+		end
+	end
+
+CheckStatus()
