@@ -1,0 +1,186 @@
+Theme = '{"__Designer.Colors.section":"FFFFFF","__Designer.Colors.topGradient":"000000","__Designer.Settings.ShowHideKey":"Enum.KeyCode.RightShift","__Designer.Colors.otherElementText":"24FFCC","__Designer.Colors.hoveredOptionBottom":"FF0000","__Designer.Background.ImageAssetID":"rbxassetid://10868386473","__Designer.Colors.selectedOption":"000000","__Designer.Colors.unselectedOption":"000000","__Designer.Background.UseBackgroundImage":true,"__Designer.Files.WorkspaceFile":"Switch Hub WOS","__Designer.Colors.innerBorder":"24FFCC","__Designer.Colors.unhoveredOptionTop":"000000","__Designer.Colors.main":"25FFCC","__Designer.Colors.outerBorder":"000000","__Designer.Background.ImageColor":"FFFFFF","__Designer.Colors.tabText":"FFFFFF","__Designer.Colors.elementBorder":"141414","__Designer.Colors.sectionBackground":"031A15","__Designer.Background.ImageTransparency":80,"__Designer.Colors.background":"000000","__Designer.Colors.bottomGradient":"000000","__Designer.Colors.elementText":"BFBFBF","__Designer.Colors.hoveredOptionTop":"000000","__Designer.Colors.unhoveredOptionBottom":"000000"}'
+
+local library = loadstring(game:GetObjects("rbxassetid://7657867786")[1].Source)()
+local Notification = loadstring(game:HttpGet("https://raw.githubusercontent.com/Jxereas/UI-Libraries/main/notification_gui_library.lua", true))()
+local Wait = library.subs.Wait -- Only returns if the GUI has not been terminated. For 'while Wait() do' loops
+
+local PepsisWorld = library:CreateWindow({
+Name = "Switch Hub",
+DefaultTheme = Theme
+})
+local General_T = PepsisWorld:CreateTab({
+    Name = "General"
+})
+--
+local Time_S = General_T:CreateSection({
+    Name = "Time",
+    Side = "Right"
+})
+local Time_Show = Time_S:AddLabel({
+    Name = ''
+})
+spawn(function()
+	while wait() do
+		pcall(function()
+			local scripttime=game.Workspace.DistributedGameTime
+			local seconds = scripttime%60
+    		local minutes = math.floor(scripttime/60%60)
+			local hours = math.floor(scripttime/3600)
+			local tempo = string.format("%.0f Hr(s), %.0f Min(s), %.0f Sec(s)", hours ,minutes, seconds)
+			Time_Show:Set(tempo)
+		end) 
+	end
+end)
+--
+local Info_S = General_T:CreateSection({
+    Name = "Status"
+})
+Info_S:AddLabel({
+    Name = 'Name : '..game.Players.LocalPlayer.Name
+})
+local placeId = game.PlaceId
+if placeId == 2753915549 then
+	World_S = '1'
+elseif placeId == 4442272183 then
+    World_S = '2'
+elseif placeId == 7449423635 then
+    World_S = '3'
+end
+Info_S:AddLabel({
+    Name = 'World : '..World_S
+})
+Info_S:AddLabel({
+    Name = 'Fruit : '..game.Players.LocalPlayer.Data.DevilFruit.Value
+})
+Info_S:AddLabel({
+    Name = 'Awaken : '
+})
+--
+local Quest_S = General_T:CreateSection({
+    Name = "Quest",
+    Side = 'Left'
+})
+Quest_S:AddLabel({
+    Name =' ❌ : Quest Bartlio'
+})
+Quest_S:AddLabel({
+    Name =' ❌ : Quest Death Step'
+})
+Quest_S:AddLabel({
+    Name =' ❌ : Quest Don Swan'
+})
+Quest_S:AddLabel({
+    Name =' ❌ : Quest Kill Don Swan'
+})
+--
+local Melee_S = General_T:CreateSection({
+    Name = "Melee",
+    Side = 'Left'
+})
+Melee_S:AddLabel({
+    Name =' ❌ : Superhuman'
+})
+Melee_S:AddLabel({
+    Name =' ❌ : Death Step'
+})
+Melee_S:AddLabel({
+    Name =' ❌ : Sharkman Karate'
+})
+Melee_S:AddLabel({
+    Name =' ❌ : Electric Claw'
+})
+Melee_S:AddLabel({
+    Name =' ❌ : Dragon Talon'
+})
+Melee_S:AddLabel({
+    Name =' ❌ : God Human'
+})
+--
+local Sword_S = General_T:CreateSection({
+    Name = "Sword",
+    Side = 'Right'
+})
+Sword_S:AddLabel({
+    Name =' ❌ : Saber'
+})
+Sword_S:AddLabel({
+    Name =' ❌ : Rengoku'
+})
+Sword_S:AddLabel({
+    Name =' ❌ : Midnight Blade'
+})
+Sword_S:AddLabel({
+    Name =' ❌ : Dragon Trident'
+})
+Sword_S:AddLabel({
+    Name =' ❌ : Yama'
+})
+Sword_S:AddLabel({
+    Name =' ❌ : Buddy Sword'
+})
+Sword_S:AddLabel({
+    Name =' ❌ : Canvander'
+})
+Sword_S:AddLabel({
+    Name =' ❌ : Twin Hooks'
+})
+Sword_S:AddLabel({
+    Name =' ❌ : Spikey Trident'
+})
+Sword_S:AddLabel({
+    Name =' ❌ : Hallow Scythe'
+})
+Sword_S:AddLabel({
+    Name =' ❌ : Dark Dagger'
+})
+Sword_S:AddLabel({
+    Name =' ❌ : Tushita'
+})
+Sword_S:AddLabel({
+    Name =' ❌ : Cursed Dual Katana'
+})
+--
+local Sword_L_S = General_T:CreateSection({
+    Name = "Sword Legendary",
+    Side = 'Right'
+})
+Sword_L_S:AddLabel({
+    Name =' ❌ : Shisui'
+})
+Sword_L_S:AddLabel({
+    Name =' ❌ : Saddi'
+})
+Sword_L_S:AddLabel({
+    Name =' ❌ : Wando'
+})
+Sword_L_S:AddLabel({
+    Name =' ❌ : True Triple Katana'
+})
+--
+local Info_M_S = General_T:CreateSection({
+    Name = "Information",
+    Side = 'Left'
+})
+Info_M_S:AddLabel({
+    Name = 'Kill Elite Hunter : '
+})
+Info_M_S:AddLabel({
+    Name = 'Kill Cake Monster : '
+})
+Info_M_S:AddLabel({
+    Name = 'Dough Awaken : '
+})
+Info_M_S:AddLabel({
+    Name = 'Soul Guitar : '
+})
+Info_M_S:AddLabel({
+    Name = 'Cursed Dual Katana : '
+})
+--
+local Gun_S = General_T:CreateSection({
+    Name = "Gun",
+    Side = 'Right'
+})
+Gun_S:AddLabel({
+    Name = '❌ : Kabucha'
+})
